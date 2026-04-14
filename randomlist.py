@@ -15,13 +15,22 @@ if(format==''):
     print("Default: decimal")
 
 def querySeparation() -> separation:
-    print("Type of separation?")
-    separation=input()
-    separation.lower()
-    separation.strip()
-    if(separation==''):
-        print("Default: ,")
-        separation=','
+    confirmation=False
+    while confirmation==False:
+        print("Type of separation?")
+        separation=input()
+        separation.lower()
+        separation.strip()
+        if(separation==''):
+            print("Default: ,")
+            separation=','
+        if(len(separation) > 1):
+            print("Multiple characters given for separation. Do you want this?")
+            confirmation = input()
+            if(confirmation=="yes" or confirmation=='y' or confirmation=="true" or confirmation=='1'):
+                confirmation=True
+            else: confirmation=False
+        else: confirmation=True
     return separation
 
 if randomCount>1: separation=querySeparation()
